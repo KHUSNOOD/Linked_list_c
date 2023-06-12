@@ -1,32 +1,38 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+#include<iostream>
+using namespace std;
+struct node{
+    int data;
+    struct node *next;
+};
+node *first=NULL;
+void create(int a[], int n){
+    int i;
+    struct node *t, *last;
+    first=new node;
+    first->data=a[0];
+    first->next=NULL;
+    last=first;
+    
+    for(int i=1; i<n; i++){
+        t=new node;
+        t->data=a[i];
+        t->next=NULL;
+        last->next=t;
+        last=t;
+    }
+}
+void display(struct node *p){
+    while(p!=NULL){
+        cout<<p->data<<" ";
+        p=p->next;
+    }
+}
+int main(){
+    int a[]={3,5,7,10,15};
+    int n=sizeof(a)/sizeof(a[0]);
+    //cout<<"Khusnood"<<endl;
+    create(a,n);
+    display(first);
+    
+    return 0;
+}
