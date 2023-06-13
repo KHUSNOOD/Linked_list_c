@@ -7,18 +7,18 @@ struct node{
 node *first=NULL;
 void create(int a[], int n){
     int i;
-    struct node *t, *last;
+    struct node *temp, *last;
     first=new node;
     first->data=a[0];
     first->next=NULL;
     last=first;
     
     for(int i=1; i<n; i++){
-        t=new node;
-        t->data=a[i];
-        t->next=NULL;
-        last->next=t; // Not able to understand this line;
-        last=t;    
+        temp=new node;
+        temp->data=a[i];
+        temp->next=NULL;
+        last->next=temp;  // last's next is pointing to temp;
+        last=temp;    
     }
 }
 void display(struct node *p){
