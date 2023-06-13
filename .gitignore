@@ -17,8 +17,8 @@ void create(int a[], int n){
         t=new node;
         t->data=a[i];
         t->next=NULL;
-        last->next=t;
-        last=t;
+        last->next=t; // Not able to understand this line;
+        last=t;    
     }
 }
 void display(struct node *p){
