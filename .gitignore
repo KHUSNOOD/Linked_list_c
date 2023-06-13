@@ -1,38 +1,37 @@
 #include<iostream>
 using namespace std;
-struct node{
-    int data;
-    struct node *next;
+// Creating the structure of node;
+struct node {
+    int data; //An integer value in it; 
+    struct node *next; // A next pointer of type node;
 };
-node *first=NULL;
+ // Creating a basic node of name as first in struct and pointing it to null;
+ struct node *first=0;
+ // Creating a void type funtion for node;
 void create(int a[], int n){
-    int i;
-    struct node *temp, *last;
-    first=new node;
-    first->data=a[0];
-    first->next=NULL;
-    last=first;
-    
+    struct node *temp, *last; // Declaring node type pointer;
+    first=new node; // Allocating memory dynamically for first;
+    first->data=a[0]; // storing the value ;
+    first->next=0;   // pointing to next node;
+    last=first;     // keeping track of last pointer;
     for(int i=1; i<n; i++){
-        temp=new node;
-        temp->data=a[i];
-        temp->next=NULL;
-        last->next=temp;  // last's next is pointing to temp;
-        last=temp;    
+        temp=new node; // Dynamically allocating memory for temp;
+        temp->data=a[i]; // storing the data from array;
+        temp->next=0; // pointing to next node address;
+        last->next=temp; // last's next is pointing to temp;
+        last=temp;      // last is temp;
     }
 }
 void display(struct node *p){
-    while(p!=NULL){
-        cout<<p->data<<" ";
-        p=p->next;
+    if(p!=0){
+        cout<<p->data<<" "; //printing the data of each node;
+        display(p->next); // calling the funtion recursivlly by pointing to next node;
     }
 }
 int main(){
-    int a[]={3,5,7,10,15};
-    int n=sizeof(a)/sizeof(a[0]);
-    //cout<<"Khusnood"<<endl;
-    create(a,n);
-    display(first);
-    
+    int a[]={1,2,3,4,56,7,8,9,90}; // creating array ;
+    int n=sizeof(a)/sizeof(a[0]);  // size of array;
+    create(a,n); // calling the create funtion in main;
+    display(first); // Calling the display funtion;
     return 0;
 }
